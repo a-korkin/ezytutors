@@ -42,4 +42,3 @@ impl From<web::Json<UpdateTutor>> for UpdateTutor {
         }
     }
 }
-

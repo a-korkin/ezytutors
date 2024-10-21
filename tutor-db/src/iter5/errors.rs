@@ -19,10 +19,10 @@ pub struct MyErrorResponse {
 impl EzyTutorError {
     fn error_response(&self) -> String {
         match self {
-            EzyTutorError::DBError(msg) => { 
+            EzyTutorError::DBError(msg) => {
                 println!("Database error occurred: {:?}", msg);
                 "Database error".into()
-            }        
+            }
             EzyTutorError::ActixError(msg) => {
                 println!("Server error occurred: {:?}", msg);
                 "Internal server error".into()
@@ -74,4 +74,3 @@ impl error::ResponseError for EzyTutorError {
         })
     }
 }
-

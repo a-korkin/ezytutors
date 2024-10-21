@@ -13,4 +13,3 @@ pub fn course_routes(cfg: &mut web::ServiceConfig) {
             .route("/{tutor_id}/{course_id}", web::get().to(get_course_details)),
     );
 }
-

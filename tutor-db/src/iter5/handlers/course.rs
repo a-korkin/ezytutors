@@ -1,11 +1,11 @@
 use crate::dbaccess::course::*;
 use crate::errors::EzyTutorError;
 use crate::models::course::{CreateCourse, UpdateCourse};
-use actix_web::{web, HttpResponse};
 use crate::state::AppState;
+use actix_web::{web, HttpResponse};
 
 pub async fn get_courses_for_tutor(
-    app_state: web::Data<AppState>, 
+    app_state: web::Data<AppState>,
     params: web::Path<i32>,
 ) -> Result<HttpResponse, EzyTutorError> {
     let tutor_id = params.into_inner();
@@ -67,8 +67,7 @@ mod tests {
     #[actix_rt::test]
     async fn get_all_courses_success() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let db_pool: PgPool = PgPool::connect(&database_url).await.unwrap();
         let app_state: web::Data<AppState> = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -84,8 +83,7 @@ mod tests {
     #[actix_rt::test]
     async fn get_course_detail_test() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let db_pool: PgPool = PgPool::connect(&database_url).await.unwrap();
         let app_state: web::Data<AppState> = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -100,8 +98,7 @@ mod tests {
     #[actix_rt::test]
     async fn get_course_detail_failure_test() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let pool: PgPool = PgPool::connect(&database_url).await.unwrap();
         let app_state: web::Data<AppState> = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -120,8 +117,7 @@ mod tests {
     #[actix_rt::test]
     async fn post_course_success() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let db_pool: PgPool = PgPool::connect(&database_url).await.unwrap();
         let app_state: web::Data<AppState> = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -147,8 +143,7 @@ mod tests {
     #[actix_rt::test]
     async fn update_course_success() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let pool = PgPool::connect(&database_url).await.unwrap();
         let app_state = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -176,8 +171,7 @@ mod tests {
     #[actix_rt::test]
     async fn delete_test_failure() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let pool = PgPool::connect(&database_url).await.unwrap();
         let app_state = web::Data::new(AppState {
             health_check_response: "".to_string(),

@@ -72,4 +72,3 @@ impl From<web::Json<UpdateCourse>> for UpdateCourse {
         }
     }
 }
-

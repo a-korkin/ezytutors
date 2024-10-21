@@ -1,6 +1,6 @@
+use super::models::Course;
 use super::state::AppState;
 use actix_web::{web, HttpResponse};
-use super::models::Course;
 use chrono::Utc;
 
 pub async fn health_check_handler(app_state: web::Data<AppState>) -> HttpResponse {
@@ -122,4 +122,3 @@ mod tests {
         assert_eq!(resp.status(), StatusCode::OK);
     }
 }
-

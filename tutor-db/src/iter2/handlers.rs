@@ -44,8 +44,7 @@ mod tests {
     #[actix_rt::test]
     async fn get_all_courses_success() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let pool: PgPool = PgPool::connect(&database_url).await.unwrap();
         let app_state: web::Data<AppState> = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -60,8 +59,7 @@ mod tests {
     #[actix_rt::test]
     async fn get_course_detail_test() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let pool: PgPool = PgPool::connect(&database_url).await.unwrap();
         let app_state: web::Data<AppState> = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -76,8 +74,7 @@ mod tests {
     #[actix_rt::test]
     async fn post_course_success() {
         dotenv().ok();
-        let database_url = env::var("DATABASE_URL")
-            .expect("DATABASE_URL is not set in .env file");
+        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
         let pool: PgPool = PgPool::connect(&database_url).await.unwrap();
         let app_state: web::Data<AppState> = web::Data::new(AppState {
             health_check_response: "".to_string(),
@@ -88,7 +85,12 @@ mod tests {
             course_id: 1,
             tutor_id: 1,
             course_name: "This is the next course".into(),
-            posted_time: Some(NaiveDate::from_ymd_opt(2020, 9, 17).unwrap().and_hms_opt(14, 01, 11).unwrap()),
+            posted_time: Some(
+                NaiveDate::from_ymd_opt(2020, 9, 17)
+                    .unwrap()
+                    .and_hms_opt(14, 01, 11)
+                    .unwrap(),
+            ),
         };
         let course_param = web::Json(new_course_msg);
         let resp = post_new_course(course_param, app_state).await;

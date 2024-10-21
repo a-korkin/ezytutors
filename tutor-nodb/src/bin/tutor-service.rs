@@ -4,12 +4,12 @@ use std::sync::Mutex;
 
 #[path = "../handlers.rs"]
 mod handlers;
+#[path = "../models.rs"]
+mod models;
 #[path = "../routes.rs"]
 mod routes;
 #[path = "../state.rs"]
 mod state;
-#[path = "../models.rs"]
-mod models;
 
 use routes::*;
 use state::AppState;
@@ -29,4 +29,3 @@ async fn main() -> io::Result<()> {
     };
     HttpServer::new(app).bind("127.0.0.1:3000")?.run().await
 }
-

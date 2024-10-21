@@ -14,4 +14,3 @@ async fn main() -> io::Result<()> {
     let app = move || App::new().configure(general_routes);
     HttpServer::new(app).bind("127.0.0.1:3000")?.run().await
 }
-

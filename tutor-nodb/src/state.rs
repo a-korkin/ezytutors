@@ -6,4 +6,3 @@ pub struct AppState {
     pub visit_count: Mutex<u32>,
     pub courses: Mutex<Vec<Course>>,
 }
-
