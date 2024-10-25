@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-members = ["tutor-nodb", "tutor-db", "check_error"]
+members = ["tutor-nodb", "tutor-web-service", "tutor-web-app-ssr", "check_error"]
